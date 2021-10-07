@@ -1,0 +1,39 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: service-v2-a-v2
+  labels:
+    app: service-v2-a
+    version: v2
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: service-v2-a
+      version: v2
+  template:
+    metadata:
+      labels:
+        app: service-v2-a
+        version: v2
+      annotations:
+        sidecar.istio.io/inject: "true"
+    spec:
+      containers:
+        - name: service-v2-a
+          image: quay.io/sasachde/service-v2-a:v2.0.2
+          env:
+            - name: SERVICE_FORMATTER
+              value: "service-v2-b/service-v2-b/api"
+            - name: JAEGER_SERVICE_NAME
+              value: service-v2-a.sps
+            - name: JAEGER_SAMPLER_TYPE
+              value: ratelimiting
+            - name: JAEGER_SAMPLER_PARAM
+              value: "1"
+            - name: JAEGER_PROPAGATION
+              value: b3
+            - name: JAEGER_ENDPOINT
+              value: http://jaeger-collector.istio-system.svc:14268/api/traces
+          ports:
+            - containerPort: 8080

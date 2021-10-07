@@ -1,0 +1,19 @@
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata:
+  name: service-b
+spec:
+  hosts:
+    - "*"
+  gateways:
+    - sanjaypsachdev-gateway
+  http:
+    - match:
+        - uri:
+            prefix: /service-b
+      route:
+        - destination:
+            host: service-b
+            subset: service-b-default
+            port:
+              number: 80

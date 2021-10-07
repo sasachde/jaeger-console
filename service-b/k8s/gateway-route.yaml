@@ -1,0 +1,98 @@
+{
+    "apiVersion": "route.openshift.io/v1",
+    "kind": "Route",
+    "metadata": {
+        "annotations": {
+            "maistra.io/original-host": "*",
+            "openshift.io/host.generated": "true"
+        },
+        "creationTimestamp": "2021-09-23T10:04:12Z",
+        "labels": {
+            "maistra.io/gateway-name": "test-gateway",
+            "maistra.io/gateway-namespace": "sps",
+            "maistra.io/gateway-resourceVersion": "656961",
+            "maistra.io/generated-by": "ior"
+        },
+        "managedFields": [
+            {
+                "apiVersion": "route.openshift.io/v1",
+                "fieldsType": "FieldsV1",
+                "fieldsV1": {
+                    "f:status": {
+                        "f:ingress": {}
+                    }
+                },
+                "manager": "openshift-router",
+                "operation": "Update",
+                "time": "2021-09-23T10:04:12Z"
+            },
+            {
+                "apiVersion": "route.openshift.io/v1",
+                "fieldsType": "FieldsV1",
+                "fieldsV1": {
+                    "f:metadata": {
+                        "f:annotations": {
+                            ".": {},
+                            "f:maistra.io/original-host": {}
+                        },
+                        "f:labels": {
+                            ".": {},
+                            "f:maistra.io/gateway-name": {},
+                            "f:maistra.io/gateway-namespace": {},
+                            "f:maistra.io/gateway-resourceVersion": {},
+                            "f:maistra.io/generated-by": {}
+                        }
+                    },
+                    "f:spec": {
+                        "f:port": {
+                            ".": {},
+                            "f:targetPort": {}
+                        },
+                        "f:to": {
+                            "f:kind": {},
+                            "f:name": {},
+                            "f:weight": {}
+                        },
+                        "f:wildcardPolicy": {}
+                    }
+                },
+                "manager": "pilot-discovery",
+                "operation": "Update",
+                "time": "2021-09-23T10:04:12Z"
+            }
+        ],
+        "name": "sps-test-gateway-525eca1d5089dbdc",
+        "namespace": "istio-system",
+        "resourceVersion": "657041",
+        "uid": "0468f74c-2154-4978-aac4-ebfce70368f6"
+    },
+    "spec": {
+        "host": "sps-test-gateway-525eca1d5089dbdc-istio-system.apps.cluster-k4wjs.k4wjs.sandbox1261.opentlc.com",
+        "port": {
+            "targetPort": "http2"
+        },
+        "to": {
+            "kind": "Service",
+            "name": "istio-ingressgateway",
+            "weight": 100
+        },
+        "wildcardPolicy": "None"
+    },
+    "status": {
+        "ingress": [
+            {
+                "conditions": [
+                    {
+                        "lastTransitionTime": "2021-09-23T10:04:12Z",
+                        "status": "True",
+                        "type": "Admitted"
+                    }
+                ],
+                "host": "sps-test-gateway-525eca1d5089dbdc-istio-system.apps.cluster-k4wjs.k4wjs.sandbox1261.opentlc.com",
+                "routerCanonicalHostname": "apps.cluster-k4wjs.k4wjs.sandbox1261.opentlc.com",
+                "routerName": "default",
+                "wildcardPolicy": "None"
+            }
+        ]
+    }
+}

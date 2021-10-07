@@ -1,0 +1,18 @@
+apiVersion: networking.istio.io/v1alpha3
+kind: DestinationRule
+metadata:
+  name: service-v2-a
+spec:
+  host: service-v2-a
+  trafficPolicy:
+    tls:
+      mode: ISTIO_MUTUAL
+  subsets:
+    - name: service-v2-a-default
+      labels:
+        app: service-v2-a
+        version: v1
+    - name: service-v2-a-canary
+      labels:
+        app: service-v2-a
+        version: v2
